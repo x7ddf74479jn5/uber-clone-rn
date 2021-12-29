@@ -16,3 +16,4 @@ web-build/
 
 .eslintcache
 yarn-error.log
+.env

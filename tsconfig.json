@@ -6,6 +6,9 @@
     "module": "esnext",
     "isolatedModules": true,
     "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    },
     "incremental": true,
     "noUncheckedIndexedAccess": true
   },

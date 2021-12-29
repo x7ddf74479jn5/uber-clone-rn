@@ -8,14 +8,12 @@ module.exports = {
     react: {
       version: "detect",
     },
-    tailwindcss: { groupByResponsive: true },
   },
   plugins: ["simple-import-sort", "import", "jsx-a11y", "react-native"],
   extends: [
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:tailwindcss/recommended",
     "prettier",
   ],
   rules: {
@@ -100,7 +98,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["app/App.tsx"],
+      files: ["src/App.tsx"],
       rules: { "import/no-default-export": "off" },
     },
   ],
