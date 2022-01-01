@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import type { StackNavigationProp } from "@react-navigation/stack";
 import { useState } from "react";
 import type { ImageSourcePropType } from "react-native";
 import { FlatList, Image, Text, View } from "react-native";
@@ -10,6 +11,7 @@ import tw from "tailwind-react-native-classnames";
 
 import { images } from "~/assets";
 import { selectTravelTimeInformation } from "~/slices/navSlice";
+import type { RootStackParamList } from "~/StackNavigator";
 
 const data = [
   {
@@ -42,11 +44,11 @@ type Ride = {
 const SURGE_CHARGE_RATE = 1.5;
 
 export const RideOptionsCard = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [isSelected, setIsSelected] = useState<Ride | null>(null);
   const travelInformation = useSelector(selectTravelTimeInformation);
 
-  const handleBack = () => navigation.navigate("NavigateCard" as never);
+  const handleBack = () => navigation.navigate("NavigateCard");
   const handleSelect = (item: Ride) => setIsSelected(item);
 
   return (

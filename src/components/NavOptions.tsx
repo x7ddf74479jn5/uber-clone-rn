@@ -1,4 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
+import type { StackNavigationProp } from "@react-navigation/stack";
+import type { ImageSourcePropType } from "react-native";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { useSelector } from "react-redux";
@@ -6,8 +8,9 @@ import tw from "tailwind-react-native-classnames";
 
 import { images } from "~/assets";
 import { selectOrigin } from "~/slices/navSlice";
+import type { RootStackParamList } from "~/StackNavigator";
 
-const data = [
+const data: Data[] = [
   {
     id: "123",
     title: "Get a ride",
@@ -22,11 +25,18 @@ const data = [
   },
 ];
 
+type Data = {
+  id: string;
+  title: string;
+  image: ImageSourcePropType;
+  screen: keyof RootStackParamList;
+};
+
 export const NavOptions = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const origin = useSelector(selectOrigin);
 
-  const handleNavigation = (screen: string) => navigation.navigate(screen as never);
+  const handleNavigation = (screen: keyof RootStackParamList) => navigation.navigate(screen);
   return (
     <FlatList
       data={data}

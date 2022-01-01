@@ -10,7 +10,7 @@ import { Map, NavigateCard, RideOptionsCard } from "~/components";
 export const MapScreen = () => {
   const Stack = createStackNavigator();
   const navigation = useNavigation();
-  const handlePressMenu = () => navigation.navigate("HomeScreen" as never);
+  const handlePressMenu = () => navigation.navigate("HomeScreen");
 
   return (
     <View>

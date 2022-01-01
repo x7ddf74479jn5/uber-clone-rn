@@ -1,5 +1,6 @@
 import { GOOGLE_MAPS_APIKEY } from "@env";
 import { useNavigation } from "@react-navigation/native";
+import type { StackNavigationProp } from "@react-navigation/stack";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { Icon } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -9,12 +10,13 @@ import { useDispatch } from "react-redux";
 import tw from "tailwind-react-native-classnames";
 
 import { setDestination } from "~/slices/navSlice";
+import type { RootStackParamList } from "~/StackNavigator";
 
 import { NavFavorites } from "./NavFavorites";
 
 export const NavigateCard = () => {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const handleKeyPress = (data: GooglePlaceData, details: GooglePlaceDetail | null) => {
     if (!data || !details) return;
@@ -26,7 +28,7 @@ export const NavigateCard = () => {
       })
     );
 
-    navigation.navigate("RideOptionsCard" as never);
+    navigation.navigate("RideOptionsCard");
   };
   return (
     <SafeAreaView style={tw`bg-white flex-1`}>
